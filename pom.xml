@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.ingrid</groupId>
 	<artifactId>Spring-Security-blog-api</artifactId>
+	
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Spring-Security-blog-api</name>
 	<description>Secure Blog API with Spring Boot, JWT, OAuth2 and Role-Based Authorization</description>
