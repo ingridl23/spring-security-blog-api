@@ -1,5 +1,6 @@
-package com.ingrid.blogapi.entity;
-
+package com.ingrid.blogapi.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import lombok.*;
 public class Permission {
 
 	 @Id
-	    @GeneratedValue(strategy = Generated.IDENTITY)
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
 	    @Column(unique = true, nullable = false)

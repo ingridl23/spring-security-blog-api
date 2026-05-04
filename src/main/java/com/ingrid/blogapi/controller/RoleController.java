@@ -1,0 +1,45 @@
+package com.ingrid.blogapi.controller;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.ingrid.blogapi.dto.RoleRequest;
+import com.ingrid.blogapi.model.Role;
+import com.ingrid.blogapi.service.RoleServiceImpl;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/roles")
+@RequiredArgsConstructor
+public class RoleController {
+
+	private final RoleServiceImpl roleService;
+
+   
+	 @PostMapping
+	    public Role createPermission(@RequestBody RoleRequest request) {
+	        return roleService.createRole(request);
+	    }
+
+	    @GetMapping
+	    public List<Role> getAllPermissions() {
+	        return roleService.getAllRoles();
+	    }
+
+	    @GetMapping("/{id}")
+	    public Optional<Role> getPermissionById(@PathVariable Long id) {
+	        return roleService.getRolesById(id);
+	    }
+
+	    @DeleteMapping("/{id}")
+	    public void deletePermission(@PathVariable Long id) {
+	    	roleService.deleteRole(id);
+	    }
+	    
+}

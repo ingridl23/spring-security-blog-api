@@ -3,6 +3,8 @@ package com.ingrid.blogapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+
 @SpringBootApplication
 public class SpringSecurityBlogApiApplication {
 
@@ -11,3 +13,7 @@ public class SpringSecurityBlogApiApplication {
 	}
 
 }
+
+
+
+
