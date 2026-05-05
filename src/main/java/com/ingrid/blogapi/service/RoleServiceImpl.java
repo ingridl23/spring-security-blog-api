@@ -3,6 +3,7 @@ package com.ingrid.blogapi.service;
 import java.util.List;
 import java.util.Optional;
 import com.ingrid.blogapi.dto.RoleRequest;
+import com.ingrid.blogapi.model.Permission;
 import com.ingrid.blogapi.model.Role;
 import com.ingrid.blogapi.repository.IRoleRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,18 @@ public class RoleServiceImpl  implements IRoleService{
 	@Override
 	public void deleteRole(Long id) {
 	 roleRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public void updateRole(Long id, String nombreRol) {
+		   
+	    Role role = roleRepository.findById(id)
+	        .orElseThrow(() -> new RuntimeException("Rol not found"));
+
+	    role.setName(nombreRol);
+
+	    roleRepository.save(role);
 		
 	}
 

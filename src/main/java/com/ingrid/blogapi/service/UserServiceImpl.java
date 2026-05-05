@@ -2,16 +2,11 @@ package com.ingrid.blogapi.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.ingrid.blogapi.dto.UserRequest;
-
 import com.ingrid.blogapi.model.User;
-
 import com.ingrid.blogapi.repository.IUserRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -48,5 +43,23 @@ public class UserServiceImpl implements IUserService {
 		userRepository.deleteById(id);
 		
 	}
+
+	@Override
+	public void updateUser(Long id, String username, String email, String pass) {
+		User user = userRepository.findById(id)
+			        .orElseThrow(() -> new RuntimeException("User not found"));
+
+		user.setUsername(username);
+		user.setEmail(email);
+		 if (pass != null && !pass.isBlank()) {
+		        user.setPassword(passwordEncoder.encode(pass));
+		    }
+
+			    userRepository.save(user);
+		
+	}
+	
+	
+
 
 }

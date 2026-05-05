@@ -13,4 +13,5 @@ public interface IpermissionService {
 	    Permission getPermissionById(Long id);
 
 	    void deletePermission(Long id);
+	    void updatePermission(Long id,String nombre);
 }

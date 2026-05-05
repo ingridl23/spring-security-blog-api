@@ -14,4 +14,5 @@ public interface IUserService {
 	    Optional<User> getUserById(Long id);
 
 	    void deleteUser(Long id);
+	    void updateUser(Long id,String username,String email,String pass);
 }

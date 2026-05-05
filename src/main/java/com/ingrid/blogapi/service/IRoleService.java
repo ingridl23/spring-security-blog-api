@@ -14,4 +14,5 @@ public interface IRoleService {
 	    Optional<Role> getRolesById(Long id);
 
 	    void deleteRole(Long id);
+	    void updateRole(Long id,String nombre);
 }

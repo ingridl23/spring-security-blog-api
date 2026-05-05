@@ -44,6 +44,18 @@ public class PermissionServiceImpl implements IpermissionService{
 		
 	}
 
+	
+	@Override
+	public void updatePermission(Long id, String nuevoNombre) {
+	    
+	    Permission permission = permissionRepository.findById(id)
+	        .orElseThrow(() -> new RuntimeException("Permission no encontrado"));
+
+	    permission.setName(nuevoNombre);
+
+	    permissionRepository.save(permission);
+	}
+
   
 	
 }
