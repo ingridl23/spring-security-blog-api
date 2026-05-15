@@ -21,6 +21,7 @@ public class CustomUserDetails implements UserDetails {
 	        this.user = user;
 	    }
 
+	   /*
 	    @Override
 	    public Collection<? extends GrantedAuthority> getAuthorities() {
 	        return user.getRoles().stream()
@@ -28,7 +29,32 @@ public class CustomUserDetails implements UserDetails {
 	                .map(permission -> new SimpleGrantedAuthority(permission.getName()))
 	                .toList();
 	    }
+*/
+	    
+	    @Override
+	    public Collection<? extends GrantedAuthority> getAuthorities() {
+	        return user.getRoles().stream()
+	                .flatMap(role -> {
+	                    var roleAuthority =
+	                            java.util.stream.Stream.of(
+	                                    new SimpleGrantedAuthority("ROLE_" + role.getName())
+	                            );
 
+	                    var permissionAuthorities = role.getPermissions().stream()
+	                            .map(permission ->
+	                                    new SimpleGrantedAuthority(permission.getName()));
+
+	                    return java.util.stream.Stream.concat(
+	                            roleAuthority,
+	                            permissionAuthorities
+	                    );
+	                })
+	                .toList();
+	    }
+	    
+	    
+	   
+	    
 	    @Override
 	    public String getPassword() {
 	        return user.getPassword();

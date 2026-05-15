@@ -1,20 +1,22 @@
-package com.ingrid.blogapi.service;
+package com.ingrid.blogapi;
 
 import java.util.Set;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import com.ingrid.blogapi.model.Role;
 import com.ingrid.blogapi.model.User;
 import com.ingrid.blogapi.repository.IRoleRepository;
 import com.ingrid.blogapi.repository.IUserRepository;
-
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 
 /**
  * clase para realizar pruebas de endpoint con un usuario de prueba y chequear que la funcionalidad y la seguridad implementada
  * funcione correctamente siguiendo el orden y el objetivo de negocio o proyecto asociado.
  */
+@Component
+@RequiredArgsConstructor
 public class DataInitializer {
 
 	private final IUserRepository userRepository;

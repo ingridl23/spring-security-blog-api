@@ -1,7 +1,6 @@
 package com.ingrid.blogapi.controller;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ingrid.blogapi.dto.UserRequest;
-import com.ingrid.blogapi.model.Author;
 import com.ingrid.blogapi.model.User;
 import com.ingrid.blogapi.service.UserServiceImpl;
-
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 @RestController
